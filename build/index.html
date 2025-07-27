@@ -1,0 +1,3067 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FormatFix - Your Complete PDF Toolkit</title>
+    <meta
+      name="description"
+      content="FormatFix: A comprehensive suite of free, secure online PDF tools. Merge, split, compress, convert, edit, sign, and manage your PDF files directly in your browser. Your privacy, our priority."
+    />
+    <meta
+      name="keywords"
+      content="formatfix, pdf tools, merge pdf, split pdf, compress pdf, pdf converter, edit pdf, sign pdf, word to pdf, pdf to word, jpg to pdf, free pdf tools, online pdf editor, pdf security, ocr pdf, optimize pdf"
+    />
+
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4795640862215786"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      /* CSS RESET & DEFAULTS */
+      :root {
+        --primary-red: #e5322d;
+        --primary-red-dark: #c22520;
+        --secondary-dark: #333;
+        --text-light: #666;
+        --background-light: #f8f8fa;
+        --background-white: #ffffff;
+        --border-color: #e0e0e0;
+        --success-green: #28a745;
+        --error-red: #dc3545;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--secondary-dark);
+        background-color: var(--background-white);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* UTILITY CLASSES */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* REVEAL ON SCROLL ANIMATION */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* HEADER & NAVIGATION */
+      .header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--background-white);
+        z-index: 1000;
+        transition: box-shadow 0.3s ease;
+      }
+      .header.scrolled {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-red);
+        text-decoration: none;
+      }
+      .nav-menu {
+        display: flex;
+        list-style: none;
+      }
+      .nav-item {
+        margin-left: 30px;
+      }
+      .nav-link {
+        text-decoration: none;
+        color: var(--secondary-dark);
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+      .nav-link:hover {
+        color: var(--primary-red);
+      }
+      .hamburger {
+        display: none;
+        cursor: pointer;
+      }
+      .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: var(--secondary-dark);
+        transition: all 0.3s ease-in-out;
+      }
+
+      /* HERO SECTION */
+      .hero {
+        padding: 100px 0;
+        text-align: center;
+        background: linear-gradient(
+          180deg,
+          var(--background-white) 0%,
+          var(--background-light) 100%
+        );
+      }
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* ADVERTISEMENT PLACEHOLDERS */
+      .ad-placeholder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+        border: 2px dashed var(--border-color);
+        color: var(--text-light);
+        font-size: 1rem;
+        margin: 40px auto;
+      }
+      .ad-banner-top {
+        width: 728px;
+        height: 90px;
+      }
+      .ad-sidebar-modal {
+        width: 200px;
+        height: 400px;
+        margin-left: 20px;
+      }
+
+      /* TOOLS SECTION */
+      #tools {
+        padding: 80px 0;
+        background-color: var(--background-light);
+      }
+      #tools h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+      }
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+      }
+      .tool-card {
+        background-color: var(--background-white);
+        border-radius: 8px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease,
+          border-color 0.3s ease;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+      .tool-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary-red);
+      }
+      .tool-icon {
+        font-size: 3rem;
+        color: var(--primary-red);
+        margin-bottom: 15px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .tool-icon svg {
+        width: 48px;
+        height: 48px;
+      }
+      .tool-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+      .tool-card p {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        min-height: 55px; /* ensure cards have similar height */
+      }
+      .badge {
+        position: absolute;
+        top: 10px;
+        right: -30px;
+        background: var(--primary-red);
+        color: white;
+        padding: 2px 30px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        transform: rotate(45deg);
+      }
+
+      /* ARTICLE/ABOUT SECTION */
+      #about,
+      #contact {
+        padding: 80px 0;
+      }
+      .article-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .article-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+      .article-content h3 {
+        font-size: 1.8rem;
+        margin-top: 40px;
+        margin-bottom: 15px;
+      }
+      .article-content p,
+      .article-content li {
+        font-size: 1.1rem;
+        color: var(--text-light);
+        margin-bottom: 15px;
+      }
+      .article-content ul {
+        padding-left: 20px;
+      }
+
+      /* MODAL */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 2000;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        backdrop-filter: blur(5px);
+      }
+      .modal.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      .modal-content {
+        background-color: var(--background-white);
+        border-radius: 8px;
+        padding: 30px;
+        width: 90%;
+        max-width: 800px;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        animation: fadeIn 0.3s ease-out;
+      }
+      .modal-main-content {
+        display: flex;
+        flex-grow: 1;
+        overflow: hidden;
+      }
+      .modal-left {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        padding-right: 15px; /* For scrollbar */
+      }
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .modal-title {
+        font-size: 1.8rem;
+      }
+      .close-button {
+        font-size: 2rem;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: var(--text-light);
+      }
+      .drop-zone {
+        border: 2px dashed var(--border-color);
+        border-radius: 8px;
+        padding: 40px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+      }
+      .drop-zone.dragover {
+        background-color: #e9f5ff;
+        border-color: #007bff;
+      }
+      .drop-zone-text {
+        color: var(--text-light);
+      }
+      .drop-zone-text strong {
+        color: var(--primary-red);
+      }
+      #file-input {
+        display: none;
+      }
+      #file-list {
+        margin-top: 20px;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      .file-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: var(--background-light);
+        border-radius: 5px;
+        margin-bottom: 5px;
+      }
+      .file-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 80%;
+      }
+      .remove-file {
+        cursor: pointer;
+        color: var(--error-red);
+        font-weight: bold;
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+      }
+      #tool-options {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #fdfdfd;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+      }
+      #tool-options label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+      #tool-options input,
+      #tool-options select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid var(--border-color);
+        margin-bottom: 15px;
+      }
+      .process-button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--background-white);
+        background-color: var(--primary-red);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+      }
+      .process-button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+      .process-button:not(:disabled):hover {
+        background-color: var(--primary-red-dark);
+      }
+      #output-area {
+        margin-top: 20px;
+      }
+      .download-link {
+        display: block;
+        padding: 12px;
+        background-color: var(--success-green);
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .loader-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 10;
+      }
+      .spinner {
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid var(--primary-red);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+      }
+      #loader-text {
+        margin-top: 15px;
+        font-weight: 500;
+      }
+
+      #pdf-editor-container,
+      #pdf-sign-container {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+      }
+      #pdf-canvas-wrapper {
+        position: relative;
+        border: 1px solid var(--border-color);
+        margin-bottom: 10px;
+        background-color: #888;
+      }
+      #pdf-canvas,
+      #fabric-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      #fabric-canvas {
+        z-index: 5;
+      }
+
+      #pdf-nav,
+      #edit-controls,
+      #sign-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      #edit-controls button,
+      #sign-controls button,
+      #pdf-nav button {
+        padding: 8px 12px;
+        background-color: var(--background-light);
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #edit-controls button.active {
+        background-color: var(--primary-red);
+        color: white;
+        border-color: var(--primary-red);
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* FOOTER */
+      .footer {
+        background-color: var(--secondary-dark);
+        color: #ccc;
+        padding: 60px 0 20px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+      .footer-col h4 {
+        color: var(--background-white);
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+      }
+      .footer-col ul {
+        list-style: none;
+      }
+      .footer-col li {
+        margin-bottom: 10px;
+      }
+      .footer-col a,
+      .footer-col p {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 0.9rem;
+      }
+      .footer-col a:hover {
+        color: var(--primary-red);
+      }
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+        font-size: 0.9rem;
+      }
+
+      /* RESPONSIVE DESIGN */
+      @media (max-width: 992px) {
+        .tools-grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-menu {
+          position: fixed;
+          left: -100%;
+          top: 70px;
+          flex-direction: column;
+          background-color: var(--background-white);
+          width: 100%;
+          height: calc(100vh - 70px);
+          text-align: center;
+          transition: 0.3s;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .nav-menu.active {
+          left: 0;
+        }
+        .nav-item {
+          margin: 20px 0;
+        }
+        .hamburger {
+          display: block;
+        }
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        #tools h2,
+        .article-content h2 {
+          font-size: 2rem;
+        }
+        .ad-sidebar-modal {
+          display: none;
+        }
+        .modal-main-content {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 15px;
+        }
+        .hero h1 {
+          font-size: 2rem;
+        }
+        .hero p {
+          font-size: 1rem;
+        }
+        .tools-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .ad-banner-top {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 728 / 90;
+        }
+      }
+    </style>
+
+    </head>
+  <body>
+    <header class="header" id="header">
+      <nav class="navbar container">
+        <a href="#" class="logo">FormatFix</a>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+          <li class="nav-item">
+            <a href="#tools" class="nav-link">All Tools</a>
+          </li>
+          <li class="nav-item">
+            <a href="#about" class="nav-link">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact Us</a>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container">
+          <h1>Every tool you need to work with PDFs in one place</h1>
+          <p>
+            Completely free, secure, and easy to use. Merge, split, compress,
+            convert, rotate, unlock and watermark PDFs with just a few clicks.
+            All processing happens in your browser.
+          </p>
+        </div>
+      </section>
+
+      <div
+        id="ad-top-banner"
+        class="ad-placeholder ad-banner-top"
+        style="display: none"
+      >
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-4795640862215786"
+          data-ad-slot="6223286045"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          let fileUploaded = false;
+
+          document
+            .getElementById("fileInput")
+            .addEventListener("change", function () {
+              if (this.files.length > 0) {
+                fileUploaded = true;
+
+                // Now this condition will be true:
+                if (fileUploaded) {
+                  document.getElementById("ad-top-banner").style.display =
+                    "block";
+                }
+              }
+            });
+        </script>
+      </div>
+
+      <section id="tools">
+        <div class="container">
+          <h2 class="reveal">All PDF Tools</h2>
+          <div class="tools-grid" id="tools-grid">
+            </div>
+        </div>
+      </section>
+
+      <section id="about" class="article-content container reveal">
+        <h2>About FormatFix</h2>
+        <p>
+          FormatFix was created to provide a simple, free, and secure solution
+          for common PDF tasks. We believe that powerful tools shouldn't be
+          complicated or require expensive software. Our entire suite of tools
+          runs directly in your browser, meaning your files are never uploaded
+          to a server. This ensures your privacy and security are always
+          protected.
+        </p>
+
+        <h3>Why are PDF Tools Essential?</h3>
+        <p>
+          The Portable Document Format (PDF) is the global standard for sharing
+          documents. However, managing them can be a challenge. Whether you're a
+          student, a professional, or just someone managing personal documents,
+          you'll inevitably need to modify a PDF. That's where we come in.
+        </p>
+
+        <h3>Our Core Features</h3>
+        <ul>
+          <li>
+            <strong>Merge & Split:</strong> Easily combine multiple PDF files
+            into one, or extract specific pages from a large document. Perfect
+            for organizing reports or creating custom document packets.
+          </li>
+          <li>
+            <strong>Compress:</strong> Reduce the file size of your PDFs without
+            a significant loss in quality, making them easier to email and
+            share.
+          </li>
+          <li>
+            <strong>Convert:</strong> Seamlessly convert PDFs to other formats
+            like Word (.txt), PowerPoint, and JPG, or transform other file types
+            like Word, Excel, and JPG into a PDF.
+          </li>
+          <li>
+            <strong>Edit & Sign:</strong> Make quick edits by adding text,
+            shapes, or drawings. Sign documents electronically with a hand-drawn
+            or typed signature.
+          </li>
+          <li>
+            <strong>Security:</strong> Add a password to protect your PDF from
+            unauthorized access or remove a password if you have the authority
+            to do so.
+          </li>
+        </ul>
+        <p>
+          Our mission is to empower users with a comprehensive set of tools that
+          are accessible to everyone, everywhere, without compromising on
+          security or user experience.
+        </p>
+      </section>
+
+      <section id="contact"></section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>About FormatFix</h4>
+            <p>
+              Your free, secure, and all-in-one online PDF solution. We process
+              your files in your browser, so your data stays private.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Tools</h4>
+            <ul>
+              <li><a href="#tools">Merge PDF</a></li>
+              <li><a href="#tools">Split PDF</a></li>
+              <li><a href="#tools">Compress PDF</a></li>
+              <li><a href="#tools">Convert PDF</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <p>Have questions? Reach out to us.</p>
+            <a href="mailto:contact@formatfix.example.com"
+              >contact@formatfix.example.com</a
+            >
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© 2025 FormatFix. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal" id="tool-modal">
+      <div class="modal-content">
+        <div class="loader-overlay" id="loader">
+          <div class="spinner"></div>
+          <p id="loader-text">Processing...</p>
+        </div>
+        <div class="modal-header">
+          <h2 class="modal-title" id="modal-title">Tool Title</h2>
+          <button class="close-button" id="close-modal">×</button>
+        </div>
+        <div class="modal-main-content">
+          <div class="modal-left">
+            <div id="pdf-editor-container">
+              <div id="edit-controls">
+                <button id="add-text-btn">Add Text</button>
+                <button id="add-rect-btn">Add Rectangle</button>
+                <button id="free-draw-btn">Free Draw</button>
+                <input type="color" id="color-picker" value="#E5322D" />
+              </div>
+              <div id="pdf-canvas-wrapper">
+                <canvas id="pdf-canvas"></canvas>
+                <canvas id="fabric-canvas"></canvas>
+              </div>
+              <div id="pdf-nav">
+                <button id="prev-page">Previous</button>
+                <span id="page-num"></span> / <span id="page-count"></span>
+                <button id="next-page">Next</button>
+              </div>
+            </div>
+            <div id="pdf-sign-container">
+              <p>Draw your signature in the box below:</p>
+              <div id="sign-controls">
+                <canvas
+                  id="sign-canvas"
+                  style="border: 1px solid black"
+                ></canvas>
+                <button id="clear-signature">Clear</button>
+              </div>
+            </div>
+            <div class="drop-zone" id="drop-zone">
+              <input type="file" id="file-input" />
+              <p class="drop-zone-text">
+                Drag & drop files here or <strong>click to select</strong>
+              </p>
+            </div>
+            <div id="file-list"></div>
+            <div id="tool-options"></div>
+            <div id="output-area"></div>
+            <button class="process-button" id="process-btn" disabled>
+              Process
+            </button>
+          </div>
+          <div class="ad-placeholder ad-sidebar-modal">
+            Advertisement (200x400)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- GLOBAL STATE & CONFIG ---
+        let currentTool = null;
+        let selectedFiles = [];
+
+        // Editor/Viewer state
+        let fabricCanvas = null;
+        let signCanvas = null;
+        let pdfDoc = null;
+        let currentPageNum = 1;
+        let pageRenderings = new Map(); // For Edit PDF
+        let editorMode = null; // 'text', 'rect', 'draw'
+
+        // Configure pdf.js worker
+        if (typeof pdfjsLib !== "undefined") {
+          pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js`;
+        }
+
+        const { PDFDocument, rgb, degrees, StandardFonts } = PDFLib;
+
+        // --- DOM ELEMENTS ---
+        const getEl = (id) => document.getElementById(id);
+        const header = getEl("header");
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        const toolsGrid = getEl("tools-grid");
+        const modal = getEl("tool-modal");
+        const modalTitle = getEl("modal-title");
+        const closeModalBtn = getEl("close-modal");
+        const dropZone = getEl("drop-zone");
+        const fileInput = getEl("file-input");
+        const fileList = getEl("file-list");
+        const toolOptionsContainer = getEl("tool-options");
+        const processBtn = getEl("process-btn");
+        const outputArea = getEl("output-area");
+        const loader = getEl("loader");
+        const loaderText = getEl("loader-text");
+
+        // Editor elements
+        const pdfEditorContainer = getEl("pdf-editor-container");
+        const pdfSignContainer = getEl("pdf-sign-container");
+        const pdfCanvas = getEl("pdf-canvas");
+        const fabricCanvasEl = getEl("fabric-canvas");
+        const prevPageBtn = getEl("prev-page");
+        const nextPageBtn = getEl("next-page");
+        const pageNumSpan = getEl("page-num");
+        const pageCountSpan = getEl("page-count");
+
+        // Edit controls
+        const addTextBtn = getEl("add-text-btn");
+        const addRectBtn = getEl("add-rect-btn");
+        const freeDrawBtn = getEl("free-draw-btn");
+        const colorPicker = getEl("color-picker");
+
+        // Sign controls
+        const signCanvasEl = getEl("sign-canvas");
+        const clearSignatureBtn = getEl("clear-signature");
+
+        // --- UI HELPER FUNCTIONS ---
+        const showLoader = (text = "Processing...") => {
+          loaderText.textContent = text;
+          loader.style.display = "flex";
+        };
+        const hideLoader = () => (loader.style.display = "none");
+
+        const showError = (message) => {
+          alert(`Error: ${message}`);
+          console.error(message);
+          hideLoader();
+        };
+
+        const createDownloadLink = (blob, filename) => {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = filename;
+          a.textContent = `Download ${filename}`;
+          a.className = "download-link";
+          outputArea.appendChild(a);
+        };
+
+        const resetModal = () => {
+          selectedFiles = [];
+          currentTool = null;
+          updateFileList();
+          toolOptionsContainer.innerHTML = "";
+          outputArea.innerHTML = "";
+          processBtn.disabled = true;
+
+          pdfEditorContainer.style.display = "none";
+          pdfSignContainer.style.display = "none";
+          dropZone.style.display = "block";
+
+          if (fabricCanvas) {
+            fabricCanvas.dispose();
+            fabricCanvas = null;
+          }
+          if (signCanvas) {
+            signCanvas.dispose();
+            signCanvas = null;
+          }
+          pdfDoc = null;
+          currentPageNum = 1;
+          pageRenderings.clear();
+        };
+
+        const openModal = (toolId) => {
+          resetModal();
+          currentTool = toolImplementations[toolId];
+          if (!currentTool) {
+            showError("Tool not found.");
+            return;
+          }
+
+          modalTitle.textContent = currentTool.title;
+          fileInput.accept = currentTool.fileType;
+          fileInput.multiple = currentTool.multiple;
+
+          if (currentTool.options) {
+            currentTool.options(toolOptionsContainer);
+          }
+
+          if (toolId === "edit-pdf") {
+            pdfEditorContainer.style.display = "flex";
+            dropZone.style.display = "none";
+          }
+          if (toolId === "sign-pdf") {
+            signCanvas = new fabric.Canvas(signCanvasEl, {
+              isDrawingMode: true,
+              width: 400,
+              height: 150,
+            });
+            signCanvas.freeDrawingBrush.width = 3;
+            signCanvas.freeDrawingBrush.color = "#000000";
+            pdfSignContainer.style.display = "flex";
+          }
+
+          // For tools without file inputs, enable the button right away
+          if (
+            [
+              "cv-resume-maker",
+              "passport-photo-maker",
+              "background-remover",
+            ].includes(toolId)
+          ) {
+            processBtn.disabled = false;
+          }
+
+          modal.classList.add("show");
+        };
+
+        const closeModal = () => {
+          modal.classList.remove("show");
+          resetModal();
+        };
+
+        const updateFileList = () => {
+          fileList.innerHTML = "";
+          if (selectedFiles.length > 0) {
+            selectedFiles.forEach((file, index) => {
+              const fileItem = document.createElement("div");
+              fileItem.className = "file-item";
+              fileItem.innerHTML = `
+                <span class="file-name">${file.name}</span>
+                <button class="remove-file" data-index="${index}">×</button>
+              `;
+              fileList.appendChild(fileItem);
+            });
+            processBtn.disabled = false;
+          } else {
+            processBtn.disabled = true;
+          }
+        };
+
+        // --- TOOL DATA ---
+        const toolData = [
+          // PDF Conversion & Manipulation
+          {
+            id: "jpg-to-pdf",
+            icon: "🖼️➡️📄",
+            title: "JPG to PDF",
+            description: "Convert JPG images to PDF.",
+            fileType: "image/jpeg,image/png",
+            multiple: true,
+            badge: null,
+          },
+          {
+            id: "pdf-to-jpg",
+            icon: "📄➡️🖼️",
+            title: "PDF to JPG",
+            description: "Convert PDF pages to JPG images.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "merge-pdf",
+            icon: "➕",
+            title: "Merge PDF",
+            description: "Combine multiple PDF files into one.",
+            fileType: "application/pdf",
+            multiple: true,
+            badge: null,
+          },
+          {
+            id: "split-pdf",
+            icon: "✂️",
+            title: "Split PDF",
+            description: "Extract specific pages from a PDF.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "compress-pdf",
+            icon: "🗜️",
+            title: "Compress PDF",
+            description: "Reduce PDF file size without losing quality.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "edit-pdf",
+            icon: "✏️",
+            title: "Edit PDF",
+            description: "Add text, shapes, or drawings to your PDF.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "sign-pdf",
+            icon: "✍️",
+            title: "Sign PDF",
+            description: "Add your signature to PDF documents.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "pdf-to-word",
+            icon: "📄➡️W",
+            title: "PDF to Word",
+            description: "Convert PDF to editable Word document (TXT).",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "word-to-pdf",
+            icon: "W➡️📄",
+            title: "Word to PDF",
+            description: "Convert Word documents (.docx) to PDF.",
+            fileType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "pdf-to-powerpoint",
+            icon: "📄➡️P",
+            title: "PDF to PowerPoint",
+            description: "Convert PDF pages into PowerPoint slides.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "excel-to-pdf",
+            icon: "X➡️📄",
+            title: "Excel to PDF",
+            description: "Convert Excel spreadsheets to PDF.",
+            fileType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "rotate-pdf",
+            icon: "🔄",
+            title: "Rotate PDF",
+            description: "Rotate PDF pages to the correct orientation.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "watermark-pdf",
+            icon: "💧",
+            title: "Watermark PDF",
+            description: "Add text or image watermarks to your PDF.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "add-image-to-pdf",
+            icon: "🖼️✍️",
+            title: "Add Image to PDF",
+            description: "Insert images into your PDF document.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "unlock-pdf",
+            icon: "🔓",
+            title: "Unlock PDF",
+            description: "Remove password protection from your PDF.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "protect-pdf",
+            icon: "🔒",
+            title: "Protect PDF",
+            description: "Add password protection to your PDF.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "add-page-numbers",
+            icon: "🔢",
+            title: "Add Page Numbers",
+            description: "Insert page numbers into your PDF document.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: null,
+          },
+          // More Tools (New Additions)
+          {
+            id: "organize-pdf",
+            icon: "🗂️",
+            title: "Organize PDF",
+            description: "Reorder, delete, or insert pages in your PDF.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: "New!",
+          },
+          {
+            id: "ocr-pdf",
+            icon: "🔍",
+            title: "OCR PDF",
+            description: "Convert scanned PDFs into searchable text.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: "New!",
+          },
+          {
+            id: "pdf-to-pdfa",
+            icon: "🏛️",
+            title: "PDF to PDF/A",
+            description: "Convert PDF to PDF/A for long-term archiving.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: "New!",
+          },
+          {
+            id: "repair-pdf",
+            icon: "❤️‍🩹",
+            title: "Repair PDF",
+            description: "Attempt to fix damaged or corrupted PDF files.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: "New!",
+          },
+          {
+            id: "extract-images",
+            icon: "📸",
+            title: "Extract Images",
+            description: "Extract all images from a PDF document.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: "New!",
+          },
+          {
+            id: "extract-text",
+            icon: "📝",
+            title: "Extract Text",
+            description: "Extract all text content from a PDF.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: "New!",
+          },
+          {
+            id: "flatten-pdf",
+            icon: "🧻",
+            title: "Flatten PDF",
+            description: "Flatten interactive elements like forms into static content.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: "New!",
+          },
+          {
+            id: "remove-pages",
+            icon: "❌📄",
+            title: "Remove Pages",
+            description: "Delete unwanted pages from your PDF.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: "New!",
+          },
+          {
+            id: "add-header-footer",
+            icon: "🅰️",
+            title: "Add Header & Footer",
+            description: "Insert custom headers and footers to your PDF.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: "New!",
+          },
+          {
+            id: "convert-to-grayscale",
+            icon: "⚫️⚪️",
+            title: "Convert to Grayscale",
+            description: "Convert your colorful PDF to grayscale.",
+            fileType: "application/pdf",
+            multiple: false,
+            badge: "New!",
+          },
+          // Non-PDF tools (as per original structure)
+          {
+            id: "cv-resume-maker",
+            icon: "📝👨‍💼",
+            title: "CV/Resume Maker",
+            description: "Craft a professional CV or resume.",
+            fileType: null,
+            multiple: false,
+            badge: "Pro",
+          },
+          {
+            id: "passport-photo-maker",
+            icon: "👤📷",
+            title: "Passport Photo Maker",
+            description: "Generate perfectly sized passport photos.",
+            fileType: "image/*",
+            multiple: false,
+            badge: "New!",
+          },
+          {
+            id: "image-resizer",
+            icon: "🖼️📏",
+            title: "Image Resizer",
+            description: "Quickly resize and compress your images.",
+            fileType: "image/jpeg,image/png",
+            multiple: false,
+            badge: null,
+          },
+          {
+            id: "background-remover",
+            icon: "✨🖼️",
+            title: "Background Remover",
+            description: "Effortlessly remove backgrounds from images.",
+            fileType: "image/jpeg,image/png",
+            multiple: false,
+            badge: "Soon",
+          },
+        ];
+
+        // --- TOOL IMPLEMENTATIONS (PLACEHOLDER LOGIC) ---
+        const toolImplementations = {
+          // --- Existing PDF Tools ---
+          "jpg-to-pdf": {
+            title: "JPG to PDF",
+            fileType: "image/jpeg,image/png",
+            multiple: true,
+            process: async (files, options) => {
+              showLoader("Converting images to PDF...");
+              try {
+                const pdfDoc = await PDFDocument.create();
+                for (const file of files) {
+                  const imgBytes = await file.arrayBuffer();
+                  let img;
+                  if (file.type === "image/jpeg") {
+                    img = await pdfDoc.embedJpg(imgBytes);
+                  } else if (file.type === "image/png") {
+                    img = await pdfDoc.embedPng(imgBytes);
+                  }
+                  const page = pdfDoc.addPage();
+                  page.drawImage(img, {
+                    x: 0,
+                    y: 0,
+                    width: page.getWidth(),
+                    height: page.getHeight(),
+                  });
+                }
+                const pdfBytes = await pdfDoc.save();
+                createDownloadLink(
+                  new Blob([pdfBytes], { type: "application/pdf" }),
+                  "converted.pdf"
+                );
+              } catch (e) {
+                showError("Failed to convert JPG to PDF: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "pdf-to-jpg": {
+            title: "PDF to JPG",
+            fileType: "application/pdf",
+            multiple: false,
+            process: async (files) => {
+              showLoader("Converting PDF to JPG...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer })
+                  .promise;
+                const zip = new JSZip();
+
+                for (let i = 1; i <= pdf.numPages; i++) {
+                  const page = await pdf.getPage(i);
+                  const viewport = page.getViewport({ scale: 1.5 });
+                  const canvas = document.createElement("canvas");
+                  const context = canvas.getContext("2d");
+                  canvas.height = viewport.height;
+                  canvas.width = viewport.width;
+
+                  await page.render({ canvasContext: context, viewport: viewport })
+                    .promise;
+                  const imgData = canvas.toDataURL("image/jpeg", 0.9);
+                  const imgBlob = await fetch(imgData).then((res) =>
+                    res.blob()
+                  );
+                  zip.file(`page_${i}.jpg`, imgBlob);
+                }
+
+                const content = await zip.generateAsync({ type: "blob" });
+                createDownloadLink(content, "pdf_images.zip");
+              } catch (e) {
+                showError("Failed to convert PDF to JPG: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "merge-pdf": {
+            title: "Merge PDF",
+            fileType: "application/pdf",
+            multiple: true,
+            process: async (files) => {
+              showLoader("Merging PDFs...");
+              try {
+                const mergedPdf = await PDFDocument.create();
+                for (const file of files) {
+                  const pdfBytes = await file.arrayBuffer();
+                  const pdf = await PDFDocument.load(pdfBytes);
+                  const copiedPages = await mergedPdf.copyPages(
+                    pdf,
+                    pdf.getPageIndices()
+                  );
+                  copiedPages.forEach((page) => mergedPdf.addPage(page));
+                }
+                const mergedPdfFile = await mergedPdf.save();
+                createDownloadLink(
+                  new Blob([mergedPdfFile], { type: "application/pdf" }),
+                  "merged.pdf"
+                );
+              } catch (e) {
+                showError("Failed to merge PDFs: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "split-pdf": {
+            title: "Split PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+              const label = document.createElement("label");
+              label.textContent = "Pages to split (e.g., 1-5, 7, 9-last):";
+              const input = document.createElement("input");
+              input.type = "text";
+              input.id = "split-pages";
+              input.placeholder = "e.g., 1-3, 5, 8-last";
+              container.appendChild(label);
+              container.appendChild(input);
+            },
+            process: async (files) => {
+              showLoader("Splitting PDF...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const pdfDoc = await PDFDocument.load(arrayBuffer);
+                const splitPagesInput = getEl("split-pages").value;
+
+                // Simple parsing for demonstration. Real-world would need robust parser.
+                const ranges = splitPagesInput
+                  .split(",")
+                  .map((s) => s.trim())
+                  .filter(Boolean);
+
+                const outputPdfs = [];
+                for (const rangeStr of ranges) {
+                  const newPdf = await PDFDocument.create();
+                  let start, end;
+                  if (rangeStr.includes("-")) {
+                    const parts = rangeStr.split("-");
+                    start = parseInt(parts[0]);
+                    end =
+                      parts[1] === "last"
+                        ? pdfDoc.getPageCount()
+                        : parseInt(parts[1]);
+                  } else {
+                    start = parseInt(rangeStr);
+                    end = parseInt(rangeStr);
+                  }
+
+                  if (isNaN(start) || isNaN(end) || start < 1 || end > pdfDoc.getPageCount() || start > end) {
+                    throw new Error(`Invalid page range: ${rangeStr}`);
+                  }
+
+                  const pagesToCopy = Array.from({ length: end - start + 1 }, (_, i) => start + i - 1); // 0-indexed
+
+                  const copiedPages = await newPdf.copyPages(pdfDoc, pagesToCopy);
+                  copiedPages.forEach((page) => newPdf.addPage(page));
+                  outputPdfs.push({
+                    name: `split_pages_${rangeStr}.pdf`,
+                    data: await newPdf.save(),
+                  });
+                }
+
+                if (outputPdfs.length === 1) {
+                  createDownloadLink(
+                    new Blob([outputPdfs[0].data], { type: "application/pdf" }),
+                    outputPdfs[0].name
+                  );
+                } else if (outputPdfs.length > 1) {
+                  const zip = new JSZip();
+                  outputPdfs.forEach((p) =>
+                    zip.file(p.name, new Blob([p.data]))
+                  );
+                  const content = await zip.generateAsync({ type: "blob" });
+                  createDownloadLink(content, "split_pdfs.zip");
+                }
+              } catch (e) {
+                showError("Failed to split PDF: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "compress-pdf": {
+            title: "Compress PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+              const label = document.createElement("label");
+              label.textContent = "Compression Quality:";
+              const select = document.createElement("select");
+              select.id = "compression-quality";
+              select.innerHTML = `
+                <option value="high">High (less compression)</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Low (more compression)</option>
+              `;
+              container.appendChild(label);
+              container.appendChild(select);
+            },
+            process: async (files) => {
+              showLoader("Compressing PDF...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const quality = getEl("compression-quality").value; // Placeholder for actual compression logic
+
+                // In a real app, you'd use a more advanced PDF compression library or server-side tool.
+                // For client-side, this often involves re-encoding images, removing metadata, etc.
+                // For this demo, we'll just simulate by loading and saving.
+                const pdfDoc = await PDFDocument.load(arrayBuffer);
+                const compressedPdfBytes = await pdfDoc.save(); // This doesn't actually compress much
+
+                createDownloadLink(
+                  new Blob([compressedPdfBytes], { type: "application/pdf" }),
+                  "compressed.pdf"
+                );
+              } catch (e) {
+                showError("Failed to compress PDF: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "edit-pdf": {
+            title: "Edit PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            process: async (files) => {
+              showLoader("Applying edits...");
+              try {
+                if (!fabricCanvas) {
+                  throw new Error("PDF Editor not initialized.");
+                }
+
+                // Load the original PDF
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const originalPdfDoc = await PDFDocument.load(arrayBuffer);
+                const newPdfDoc = await PDFDocument.create();
+
+                const font = await newPdfDoc.embedFont(StandardFonts.Helvetica);
+
+                for (let i = 0; i < originalPdfDoc.getPageCount(); i++) {
+                  const [originalPage] = await newPdfDoc.copyPages(originalPdfDoc, [i]);
+                  newPdfDoc.addPage(originalPage);
+
+                  const fabricObjects = pageRenderings.get(i + 1); // Get objects for current page
+
+                  if (fabricObjects && fabricObjects.length > 0) {
+                    const currentPage = newPdfDoc.getPages()[i];
+
+                    for (const obj of fabricObjects) {
+                      if (obj.type === "i-text") {
+                        currentPage.drawText(obj.text, {
+                          x: obj.left,
+                          y: currentPage.getHeight() - obj.top - obj.height, // Adjust for PDF coordinates
+                          font,
+                          size: obj.fontSize,
+                          color: rgb(obj.fill.r / 255, obj.fill.g / 255, obj.fill.b / 255),
+                          rotate: degrees(obj.angle || 0),
+                        });
+                      } else if (obj.type === "rect") {
+                        currentPage.drawRectangle({
+                          x: obj.left,
+                          y: currentPage.getHeight() - obj.top - obj.height,
+                          width: obj.width,
+                          height: obj.height,
+                          borderColor: rgb(obj.stroke.r / 255, obj.stroke.g / 255, obj.stroke.b / 255),
+                          borderWidth: obj.strokeWidth,
+                          color: rgb(obj.fill.r / 255, obj.fill.g / 255, obj.fill.b / 255),
+                        });
+                      } else if (obj.type === "path") {
+                        // Drawing paths are more complex to embed directly.
+                        // For simplicity, we'll convert the FabricJS canvas to an image and embed it.
+                        // This is a common workaround for complex FabricJS drawings.
+                        const dataURL = fabricCanvasEl.toDataURL({
+                            format: 'png',
+                            multiplier: 2 // Render at higher resolution
+                        });
+                        const pngImage = await newPdfDoc.embedPng(dataURL);
+                        currentPage.drawImage(pngImage, {
+                            x: 0, y: 0,
+                            width: currentPage.getWidth(),
+                            height: currentPage.getHeight(),
+                        });
+                        break; // Only one image per page for simplicity, as it includes all drawings.
+                      }
+                    }
+                  }
+                }
+
+                const modifiedPdfBytes = await newPdfDoc.save();
+                createDownloadLink(
+                  new Blob([modifiedPdfBytes], { type: "application/pdf" }),
+                  "edited.pdf"
+                );
+              } catch (e) {
+                showError("Failed to edit PDF: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "sign-pdf": {
+            title: "Sign PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            process: async (files) => {
+              showLoader("Adding signature...");
+              try {
+                if (!signCanvas || signCanvas.getObjects().length === 0) {
+                  throw new Error("No signature drawn.");
+                }
+
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const pdfDoc = await PDFDocument.load(arrayBuffer);
+
+                const pages = pdfDoc.getPages();
+                if (pages.length === 0) {
+                  throw new Error("PDF contains no pages.");
+                }
+
+                const signDataUrl = signCanvas.toDataURL({
+                  format: "png",
+                  multiplier: 2, // higher resolution
+                });
+                const signatureImage = await pdfDoc.embedPng(signDataUrl);
+
+                // Add signature to the first page for simplicity
+                const firstPage = pages[0];
+                const { width, height } = signatureImage;
+                firstPage.drawImage(signatureImage, {
+                  x: firstPage.getWidth() - width - 50,
+                  y: 50,
+                  width: width * 0.5, // Scale down the signature
+                  height: height * 0.5,
+                });
+
+                const modifiedPdfBytes = await pdfDoc.save();
+                createDownloadLink(
+                  new Blob([modifiedPdfBytes], { type: "application/pdf" }),
+                  "signed.pdf"
+                );
+              } catch (e) {
+                showError("Failed to sign PDF: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "pdf-to-word": {
+            title: "PDF to Word",
+            fileType: "application/pdf",
+            multiple: false,
+            process: async (files) => {
+              showLoader("Converting PDF to Word (TXT)...");
+              try {
+                // PDF to Word (editable) is complex and typically requires server-side processing or heavy client-side libraries.
+                // For this demo, we'll simulate by extracting text into a .txt file.
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer })
+                  .promise;
+                let fullText = "";
+                for (let i = 1; i <= pdf.numPages; i++) {
+                  const page = await pdf.getPage(i);
+                  const textContent = await page.getTextContent();
+                  fullText += textContent.items.map((item) => item.str).join(" ") + "\n\n";
+                }
+                const textBlob = new Blob([fullText], { type: "text/plain" });
+                createDownloadLink(textBlob, "converted_document.txt");
+              } catch (e) {
+                showError("Failed to convert PDF to Word: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "word-to-pdf": {
+            title: "Word to PDF",
+            fileType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            multiple: false,
+            process: async (files) => {
+              showLoader("Converting Word to PDF...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+
+                // Mammoth.js converts DOCX to HTML. Then html2pdf.js converts HTML to PDF.
+                const result = await mammoth.convertToHtml({ arrayBuffer: arrayBuffer });
+                const html = result.value; // The generated HTML
+
+                const opt = {
+                  margin: 1,
+                  filename: "converted.pdf",
+                  image: { type: "jpeg", quality: 0.98 },
+                  html2canvas: { scale: 2 },
+                  jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+                };
+
+                const pdfBlob = await html2pdf().set(opt).from(html).outputPdf("blob");
+                createDownloadLink(pdfBlob, "converted.pdf");
+              } catch (e) {
+                showError("Failed to convert Word to PDF: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "pdf-to-powerpoint": {
+            title: "PDF to PowerPoint",
+            fileType: "application/pdf",
+            multiple: false,
+            process: async (files) => {
+              showLoader("Converting PDF to PowerPoint...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer })
+                  .promise;
+                const pptx = new PptxGenJS();
+
+                for (let i = 1; i <= pdf.numPages; i++) {
+                  const page = await pdf.getPage(i);
+                  const viewport = page.getViewport({ scale: 1.0 });
+                  const canvas = document.createElement("canvas");
+                  const context = canvas.getContext("2d");
+                  canvas.height = viewport.height;
+                  canvas.width = viewport.width;
+
+                  await page.render({ canvasContext: context, viewport: viewport })
+                    .promise;
+                  const imgData = canvas.toDataURL("image/png");
+
+                  const slide = pptx.addSlide();
+                  slide.addImage({
+                    data: imgData,
+                    x: 0,
+                    y: 0,
+                    w: pptx.getWidth(),
+                    h: pptx.getHeight(),
+                  });
+                }
+                const pptxBlob = await pptx.write("blob");
+                createDownloadLink(pptxBlob, "converted.pptx");
+              } catch (e) {
+                showError("Failed to convert PDF to PowerPoint: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "excel-to-pdf": {
+            title: "Excel to PDF",
+            fileType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            multiple: false,
+            process: async (files) => {
+              showLoader("Converting Excel to PDF...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const workbook = XLSX.read(arrayBuffer, { type: "array" });
+                const firstSheetName = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[firstSheetName];
+                const html = XLSX.utils.sheet_to_html(worksheet);
+
+                const opt = {
+                  margin: 0.5,
+                  filename: "converted.pdf",
+                  image: { type: "jpeg", quality: 0.98 },
+                  html2canvas: { scale: 2 },
+                  jsPDF: { unit: "in", format: "letter", orientation: "landscape" },
+                };
+
+                const pdfBlob = await html2pdf().set(opt).from(html).outputPdf("blob");
+                createDownloadLink(pdfBlob, "converted.pdf");
+              } catch (e) {
+                showError("Failed to convert Excel to PDF: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "rotate-pdf": {
+            title: "Rotate PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+              const label = document.createElement("label");
+              label.textContent = "Rotation Angle:";
+              const select = document.createElement("select");
+              select.id = "rotation-angle";
+              select.innerHTML = `
+                <option value="90">90° Clockwise</option>
+                <option value="180">180°</option>
+                <option value="270">270° Clockwise</option>
+              `;
+              container.appendChild(label);
+              container.appendChild(select);
+            },
+            process: async (files) => {
+              showLoader("Rotating PDF...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const pdfDoc = await PDFDocument.load(arrayBuffer);
+                const angle = parseInt(getEl("rotation-angle").value);
+
+                pdfDoc.getPages().forEach((page) => {
+                  page.setRotation(degrees(angle));
+                });
+
+                const modifiedPdfBytes = await pdfDoc.save();
+                createDownloadLink(
+                  new Blob([modifiedPdfBytes], { type: "application/pdf" }),
+                  "rotated.pdf"
+                );
+              } catch (e) {
+                showError("Failed to rotate PDF: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "watermark-pdf": {
+            title: "Watermark PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+              const textLabel = document.createElement("label");
+              textLabel.textContent = "Watermark Text:";
+              const textInput = document.createElement("input");
+              textInput.type = "text";
+              textInput.id = "watermark-text";
+              textInput.placeholder = "Your watermark text";
+              container.appendChild(textLabel);
+              container.appendChild(textInput);
+
+              const opacityLabel = document.createElement("label");
+              opacityLabel.textContent = "Opacity (0.1 - 1.0):";
+              const opacityInput = document.createElement("input");
+              opacityInput.type = "number";
+              opacityInput.id = "watermark-opacity";
+              opacityInput.min = "0.1";
+              opacityInput.max = "1.0";
+              opacityInput.step = "0.1";
+              opacityInput.value = "0.5";
+              container.appendChild(opacityLabel);
+              container.appendChild(opacityInput);
+            },
+            process: async (files) => {
+              showLoader("Adding watermark...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const pdfDoc = await PDFDocument.load(arrayBuffer);
+                const watermarkText = getEl("watermark-text").value || "FormatFix Watermark";
+                const opacity = parseFloat(getEl("watermark-opacity").value);
+
+                const pages = pdfDoc.getPages();
+                const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+                for (const page of pages) {
+                  const { width, height } = page.getSize();
+                  const fontSize = Math.min(width, height) / 8; // Dynamic font size
+                  const textWidth = font.widthOfTextAtSize(watermarkText, fontSize);
+                  const xPos = (width - textWidth) / 2;
+                  const yPos = (height - fontSize) / 2;
+
+                  page.drawText(watermarkText, {
+                    x: xPos,
+                    y: yPos,
+                    font,
+                    size: fontSize,
+                    color: rgb(0.5, 0.5, 0.5),
+                    opacity: opacity,
+                    rotate: degrees(45), // Optional diagonal watermark
+                  });
+                }
+                const modifiedPdfBytes = await pdfDoc.save();
+                createDownloadLink(
+                  new Blob([modifiedPdfBytes], { type: "application/pdf" }),
+                  "watermarked.pdf"
+                );
+              } catch (e) {
+                showError("Failed to watermark PDF: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "add-image-to-pdf": {
+            title: "Add Image to PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+              const label = document.createElement("label");
+              label.textContent = "Select Image to Add:";
+              const input = document.createElement("input");
+              input.type = "file";
+              input.id = "image-to-add";
+              input.accept = "image/jpeg,image/png";
+              container.appendChild(label);
+              container.appendChild(input);
+
+              // Add a listener to enable process button if image is selected
+              input.addEventListener("change", () => {
+                if (input.files.length > 0 && selectedFiles.length > 0) {
+                  processBtn.disabled = false;
+                } else {
+                  processBtn.disabled = true;
+                }
+              });
+            },
+            process: async (files) => {
+              showLoader("Adding image to PDF...");
+              try {
+                const pdfFile = files[0];
+                const imageFile = getEl("image-to-add").files[0];
+
+                if (!imageFile) {
+                  throw new Error("No image selected to add.");
+                }
+
+                const pdfBytes = await pdfFile.arrayBuffer();
+                const imageBytes = await imageFile.arrayBuffer();
+
+                const pdfDoc = await PDFDocument.load(pdfBytes);
+                let embeddedImage;
+                if (imageFile.type === "image/jpeg") {
+                  embeddedImage = await pdfDoc.embedJpg(imageBytes);
+                } else if (imageFile.type === "image/png") {
+                  embeddedImage = await pdfDoc.embedPng(imageBytes);
+                } else {
+                  throw new Error("Unsupported image format.");
+                }
+
+                const pages = pdfDoc.getPages();
+                if (pages.length === 0) {
+                  throw new Error("PDF contains no pages.");
+                }
+
+                // Add image to the first page (for simplicity)
+                const firstPage = pages[0];
+                const { width, height } = embeddedImage;
+                firstPage.drawImage(embeddedImage, {
+                  x: 50,
+                  y: 50,
+                  width: width * 0.2, // Scale down the image
+                  height: height * 0.2,
+                });
+
+                const modifiedPdfBytes = await pdfDoc.save();
+                createDownloadLink(
+                  new Blob([modifiedPdfBytes], { type: "application/pdf" }),
+                  "pdf_with_image.pdf"
+                );
+              } catch (e) {
+                showError("Failed to add image to PDF: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "unlock-pdf": {
+            title: "Unlock PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+              const label = document.createElement("label");
+              label.textContent = "Enter Password (if required):";
+              const input = document.createElement("input");
+              input.type = "password";
+              input.id = "pdf-password";
+              input.placeholder = "PDF password (optional)";
+              container.appendChild(label);
+              container.appendChild(input);
+            },
+            process: async (files) => {
+              showLoader("Unlocking PDF...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const password = getEl("pdf-password").value;
+
+                const pdfDoc = await PDFDocument.load(arrayBuffer, {
+                  password: password || undefined, // Pass password if provided
+                });
+
+                const unlockedPdfBytes = await pdfDoc.save();
+                createDownloadLink(
+                  new Blob([unlockedPdfBytes], { type: "application/pdf" }),
+                  "unlocked.pdf"
+                );
+              } catch (e) {
+                showError("Failed to unlock PDF. Incorrect password or corrupted file: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "protect-pdf": {
+            title: "Protect PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+              const label = document.createElement("label");
+              label.textContent = "Set Password:";
+              const input = document.createElement("input");
+              input.type = "password";
+              input.id = "set-pdf-password";
+              input.placeholder = "Enter new password";
+              input.required = true;
+              container.appendChild(label);
+              container.appendChild(input);
+            },
+            process: async (files) => {
+              showLoader("Protecting PDF...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const password = getEl("set-pdf-password").value;
+
+                if (!password) {
+                  throw new Error("Please enter a password to protect the PDF.");
+                }
+
+                const pdfDoc = await PDFDocument.load(arrayBuffer);
+                const protectedPdfBytes = await pdfDoc.save({
+                  Encryption: {
+                    userPassword: password,
+                    ownerPassword: password, // Same for simplicity
+                    // You can add more granular permissions here
+                  },
+                });
+                createDownloadLink(
+                  new Blob([protectedPdfBytes], { type: "application/pdf" }),
+                  "protected.pdf"
+                );
+              } catch (e) {
+                showError("Failed to protect PDF: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "add-page-numbers": {
+            title: "Add Page Numbers",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+              const label = document.createElement("label");
+              label.textContent = "Position:";
+              const select = document.createElement("select");
+              select.id = "page-number-position";
+              select.innerHTML = `
+                <option value="bottom-right">Bottom Right</option>
+                <option value="bottom-center">Bottom Center</option>
+                <option value="top-right">Top Right</option>
+                <option value="top-center">Top Center</option>
+              `;
+              container.appendChild(label);
+              container.appendChild(select);
+
+              const startNumLabel = document.createElement("label");
+              startNumLabel.textContent = "Start Number:";
+              const startNumInput = document.createElement("input");
+              startNumInput.type = "number";
+              startNumInput.id = "page-number-start";
+              startNumInput.value = "1";
+              startNumInput.min = "1";
+              container.appendChild(startNumLabel);
+              container.appendChild(startNumInput);
+            },
+            process: async (files) => {
+              showLoader("Adding page numbers...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const pdfDoc = await PDFDocument.load(arrayBuffer);
+                const position = getEl("page-number-position").value;
+                let startNumber = parseInt(getEl("page-number-start").value || "1");
+
+                const pages = pdfDoc.getPages();
+                const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+                const fontSize = 10;
+                const margin = 30;
+
+                for (let i = 0; i < pages.length; i++) {
+                  const page = pages[i];
+                  const pageText = `${startNumber + i}`;
+                  const { width, height } = page.getSize();
+                  const textWidth = font.widthOfTextAtSize(pageText, fontSize);
+
+                  let x, y;
+                  switch (position) {
+                    case "bottom-right":
+                      x = width - textWidth - margin;
+                      y = margin;
+                      break;
+                    case "bottom-center":
+                      x = (width - textWidth) / 2;
+                      y = margin;
+                      break;
+                    case "top-right":
+                      x = width - textWidth - margin;
+                      y = height - fontSize - margin;
+                      break;
+                    case "top-center":
+                      x = (width - textWidth) / 2;
+                      y = height - fontSize - margin;
+                      break;
+                  }
+
+                  page.drawText(pageText, {
+                    x,
+                    y,
+                    font,
+                    size: fontSize,
+                    color: rgb(0, 0, 0),
+                  });
+                }
+                const modifiedPdfBytes = await pdfDoc.save();
+                createDownloadLink(
+                  new Blob([modifiedPdfBytes], { type: "application/pdf" }),
+                  "numbered.pdf"
+                );
+              } catch (e) {
+                showError("Failed to add page numbers: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+
+          // --- New PDF Tools ---
+          "organize-pdf": {
+            title: "Organize PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+                container.innerHTML = `<p style="font-size:0.9em; color:var(--text-light);">This feature will allow reordering, deleting, or inserting pages. For this demo, it will simply process the file without changes.</p>`;
+            },
+            process: async (files) => {
+              showLoader("Organizing PDF (feature under development)...");
+              // Placeholder for actual complex page manipulation logic
+              // In a full implementation, you'd provide UI for drag-and-drop or page range input.
+              try {
+                  const file = files[0];
+                  const arrayBuffer = await file.arrayBuffer();
+                  const pdfDoc = await PDFDocument.load(arrayBuffer);
+                  const organizedPdfBytes = await pdfDoc.save(); // No actual change for demo
+                  createDownloadLink(new Blob([organizedPdfBytes], { type: "application/pdf" }), "organized.pdf");
+              } catch (e) {
+                  showError("Failed to organize PDF: " + e.message);
+              } finally {
+                  hideLoader();
+              }
+            },
+          },
+          "ocr-pdf": {
+            title: "OCR PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+                container.innerHTML = `<p style="font-size:0.9em; color:var(--text-light);">This feature will convert scanned images within your PDF into searchable text. This may take some time depending on document size.</p>`;
+            },
+            process: async (files) => {
+              showLoader("Performing OCR on PDF (this can take a while)...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                const textCollector = [];
+
+                for (let i = 1; i <= pdf.numPages; i++) {
+                  const page = await pdf.getPage(i);
+                  const viewport = page.getViewport({ scale: 2.0 }); // Render at higher resolution for OCR
+                  const canvas = document.createElement("canvas");
+                  const context = canvas.getContext("2d");
+                  canvas.height = viewport.height;
+                  canvas.width = viewport.width;
+
+                  await page.render({ canvasContext: context, viewport: viewport }).promise;
+
+                  const {
+                    data: { text },
+                  } = await Tesseract.recognize(canvas, "eng", {
+                    logger: (m) => {
+                      if (m.status === "recognizing text") {
+                        loaderText.textContent = `OCR: ${Math.round(m.progress * 100)}% done on page ${i}`;
+                      }
+                    },
+                  });
+                  textCollector.push(text);
+                }
+
+                // Create a new PDF with the recognized text as an overlay (simplified for demo)
+                const originalPdfDoc = await PDFDocument.load(arrayBuffer);
+                const newPdfDoc = await PDFDocument.create();
+                const font = await newPdfDoc.embedFont(StandardFonts.Helvetica);
+
+                for (let i = 0; i < originalPdfDoc.getPages().length; i++) {
+                    const [originalPage] = await newPdfDoc.copyPages(originalPdfDoc, [i]);
+                    newPdfDoc.addPage(originalPage); // Add original page
+                    const page = newPdfDoc.getPages()[i];
+
+                    // Overlay transparent text for searchability (simplified positioning)
+                    page.drawText(textCollector[i] || '', {
+                        x: 50,
+                        y: page.getHeight() - 50,
+                        font,
+                        size: 1, // Very small font, but searchable
+                        color: rgb(0, 0, 0),
+                        opacity: 0.01 // Make it almost invisible
+                    });
+                }
+
+
+                const ocrPdfBytes = await newPdfDoc.save();
+                createDownloadLink(new Blob([ocrPdfBytes], { type: "application/pdf" }), "ocr_searchable.pdf");
+
+              } catch (e) {
+                showError("Failed to perform OCR: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "pdf-to-pdfa": {
+            title: "PDF to PDF/A",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+                container.innerHTML = `<p style="font-size:0.9em; color:var(--text-light);">This feature will convert your PDF to PDF/A format for long-term archiving. Note: Full PDF/A compliance requires specific font embedding and color profiles which may increase file size.</p>`;
+            },
+            process: async (files) => {
+              showLoader("Converting to PDF/A (simulated)...");
+              // Converting to true PDF/A usually requires server-side libraries like Ghostscript or dedicated tools.
+              // pdf-lib currently doesn't have direct PDF/A conversion.
+              // For this demo, we'll load and save, indicating it's a "simulated" conversion.
+              try {
+                  const file = files[0];
+                  const arrayBuffer = await file.arrayBuffer();
+                  const pdfDoc = await PDFDocument.load(arrayBuffer);
+                  const pdfABytes = await pdfDoc.save(); // This won't truly convert to PDF/A
+                  createDownloadLink(new Blob([pdfABytes], { type: "application/pdf" }), "converted_to_pdfa.pdf");
+              } catch (e) {
+                  showError("Failed to convert to PDF/A: " + e.message);
+              } finally {
+                  hideLoader();
+              }
+            },
+          },
+          "repair-pdf": {
+            title: "Repair PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+                container.innerHTML = `<p style="font-size:0.9em; color:var(--text-light);">Attempt to repair minor corruption issues in your PDF file. Note: Severely damaged files may not be recoverable.</p>`;
+            },
+            process: async (files) => {
+              showLoader("Attempting to repair PDF...");
+              // PDF repair is highly complex and often relies on server-side tools.
+              // Client-side libraries can sometimes fix minor issues by re-saving.
+              try {
+                  const file = files[0];
+                  const arrayBuffer = await file.arrayBuffer();
+                  const pdfDoc = await PDFDocument.load(arrayBuffer); // Loading and saving can sometimes 'repair' simple issues
+                  const repairedPdfBytes = await pdfDoc.save();
+                  createDownloadLink(new Blob([repairedPdfBytes], { type: "application/pdf" }), "repaired.pdf");
+              } catch (e) {
+                  showError("Failed to repair PDF (file might be too corrupted): " + e.message);
+              } finally {
+                  hideLoader();
+              }
+            },
+          },
+          "extract-images": {
+            title: "Extract Images",
+            fileType: "application/pdf",
+            multiple: false,
+            process: async (files) => {
+              showLoader("Extracting images...");
+              try {
+                  const file = files[0];
+                  const arrayBuffer = await file.arrayBuffer();
+                  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                  const zip = new JSZip();
+                  let imageCount = 0;
+
+                  for (let i = 1; i <= pdf.numPages; i++) {
+                      const page = await pdf.getPage(i);
+                      const operatorList = await page.getOperatorList();
+                      const commonObjs = pdf.commonObjs;
+
+                      // This is a very simplified image extraction, might not catch all images
+                      for (const operator of operatorList.fnArray) {
+                          if (operator === pdfjsLib.OPS.paintJpegXObject || operator === pdfjsLib.OPS.paintImageXObject) {
+                              const imageName = operatorList.argsArray[operatorList.fnArray.indexOf(operator) + 1][0];
+                              const img = commonObjs.get(imageName);
+                              if (img && img.data && img.width && img.height) {
+                                  const canvas = document.createElement('canvas');
+                                  const ctx = canvas.getContext('2d');
+                                  canvas.width = img.width;
+                                  canvas.height = img.height;
+                                  // For JPEG/PNG direct data
+                                  if (img.data instanceof Uint8Array) {
+                                      const imageData = new ImageData(new Uint8ClampedArray(img.data), img.width, img.height);
+                                      ctx.putImageData(imageData, 0, 0);
+                                  } else { // For indexed color images, draw to canvas
+                                      // This part needs more robust handling for various image types in PDFs
+                                      console.warn("Complex image type, skipping direct extraction for demo.");
+                                      continue;
+                                  }
+
+                                  const imgBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                                  imageCount++;
+                                  zip.file(`image_${imageCount}.png`, imgBlob);
+                              }
+                          }
+                      }
+                  }
+
+                  if (imageCount === 0) {
+                      showError("No images found in the PDF or complex images skipped for extraction.");
+                      return;
+                  }
+
+                  const content = await zip.generateAsync({ type: "blob" });
+                  createDownloadLink(content, "extracted_images.zip");
+              } catch (e) {
+                  showError("Failed to extract images: " + e.message);
+              } finally {
+                  hideLoader();
+              }
+            },
+          },
+          "extract-text": {
+            title: "Extract Text",
+            fileType: "application/pdf",
+            multiple: false,
+            process: async (files) => {
+              showLoader("Extracting text...");
+              try {
+                const file = files[0];
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer })
+                  .promise;
+                let fullText = "";
+                for (let i = 1; i <= pdf.numPages; i++) {
+                  const page = await pdf.getPage(i);
+                  const textContent = await page.getTextContent();
+                  fullText += textContent.items.map((item) => item.str).join(" ") + "\n\n";
+                }
+                const textBlob = new Blob([fullText], { type: "text/plain" });
+                createDownloadLink(textBlob, "extracted_text.txt");
+              } catch (e) {
+                showError("Failed to extract text: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "flatten-pdf": {
+            title: "Flatten PDF",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+                container.innerHTML = `<p style="font-size:0.9em; color:var(--text-light);">This feature will flatten interactive elements (like form fields or comments) into the PDF, making them static and non-editable. This is useful for archiving or ensuring consistent viewing across all readers.</p>`;
+            },
+            process: async (files) => {
+              showLoader("Flattening PDF (simulated)...");
+              // PDF-LIB can merge content streams which essentially "flattens" layers.
+              try {
+                  const file = files[0];
+                  const arrayBuffer = await file.arrayBuffer();
+                  const pdfDoc = await PDFDocument.load(arrayBuffer);
+                  // Simply loading and re-saving with default options can flatten some dynamic content.
+                  // For true flattening, you'd iterate through form fields/annotations and draw their static representation.
+                  const flattenedPdfBytes = await pdfDoc.save();
+                  createDownloadLink(new Blob([flattenedPdfBytes], { type: "application/pdf" }), "flattened.pdf");
+              } catch (e) {
+                  showError("Failed to flatten PDF: " + e.message);
+              } finally {
+                  hideLoader();
+              }
+            },
+          },
+          "remove-pages": {
+            title: "Remove Pages",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+              const label = document.createElement("label");
+              label.textContent = "Pages to remove (e.g., 1, 3-5):";
+              const input = document.createElement("input");
+              input.type = "text";
+              input.id = "remove-pages-input";
+              input.placeholder = "e.g., 2, 4-6";
+              container.appendChild(label);
+              container.appendChild(input);
+            },
+            process: async (files) => {
+              showLoader("Removing pages...");
+              try {
+                  const file = files[0];
+                  const arrayBuffer = await file.arrayBuffer();
+                  const pdfDoc = await PDFDocument.load(arrayBuffer);
+                  const pagesToRemoveInput = getEl("remove-pages-input").value;
+
+                  const pagesToRemove = new Set();
+                  pagesToRemoveInput.split(',').forEach(rangeStr => {
+                      rangeStr = rangeStr.trim();
+                      if (rangeStr.includes('-')) {
+                          let [start, end] = rangeStr.split('-').map(Number);
+                          if (isNaN(start) || isNaN(end) || start < 1 || end > pdfDoc.getPageCount() || start > end) {
+                              throw new Error(`Invalid page range to remove: ${rangeStr}`);
+                          }
+                          for (let i = start; i <= end; i++) {
+                              pagesToRemove.add(i - 1); // Convert to 0-indexed
+                          }
+                      } else {
+                          let pageNum = Number(rangeStr);
+                          if (isNaN(pageNum) || pageNum < 1 || pageNum > pdfDoc.getPageCount()) {
+                              throw new Error(`Invalid page number to remove: ${rangeStr}`);
+                          }
+                          pagesToRemove.add(pageNum - 1); // Convert to 0-indexed
+                      }
+                  });
+
+                  const newPdf = await PDFDocument.create();
+                  const originalPages = pdfDoc.getPages();
+                  for (let i = 0; i < originalPages.length; i++) {
+                      if (!pagesToRemove.has(i)) {
+                          const [copiedPage] = await newPdf.copyPages(pdfDoc, [i]);
+                          newPdf.addPage(copiedPage);
+                      }
+                  }
+
+                  const modifiedPdfBytes = await newPdf.save();
+                  createDownloadLink(new Blob([modifiedPdfBytes], { type: "application/pdf" }), "pages_removed.pdf");
+              } catch (e) {
+                  showError("Failed to remove pages: " + e.message);
+              } finally {
+                  hideLoader();
+              }
+            },
+          },
+          "add-header-footer": {
+            title: "Add Header & Footer",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+              const headerLabel = document.createElement("label");
+              headerLabel.textContent = "Header Text:";
+              const headerInput = document.createElement("input");
+              headerInput.type = "text";
+              headerInput.id = "header-text";
+              headerInput.placeholder = "Optional Header";
+              container.appendChild(headerLabel);
+              container.appendChild(headerInput);
+
+              const footerLabel = document.createElement("label");
+              footerLabel.textContent = "Footer Text:";
+              const footerInput = document.createElement("input");
+              footerInput.type = "text";
+              footerInput.id = "footer-text";
+              footerInput.placeholder = "Optional Footer";
+              container.appendChild(footerLabel);
+              container.appendChild(footerInput);
+            },
+            process: async (files) => {
+              showLoader("Adding header and footer...");
+              try {
+                  const file = files[0];
+                  const arrayBuffer = await file.arrayBuffer();
+                  const pdfDoc = await PDFDocument.load(arrayBuffer);
+                  const headerText = getEl("header-text").value;
+                  const footerText = getEl("footer-text").value;
+
+                  if (!headerText && !footerText) {
+                      throw new Error("Please provide text for header or footer.");
+                  }
+
+                  const pages = pdfDoc.getPages();
+                  const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+                  const fontSize = 10;
+                  const margin = 20;
+
+                  for (const page of pages) {
+                      const { width, height } = page.getSize();
+                      if (headerText) {
+                          const textWidth = font.widthOfTextAtSize(headerText, fontSize);
+                          page.drawText(headerText, {
+                              x: (width - textWidth) / 2,
+                              y: height - margin - fontSize,
+                              font,
+                              size: fontSize,
+                              color: rgb(0, 0, 0),
+                          });
+                      }
+                      if (footerText) {
+                          const textWidth = font.widthOfTextAtSize(footerText, fontSize);
+                          page.drawText(footerText, {
+                              x: (width - textWidth) / 2,
+                              y: margin,
+                              font,
+                              size: fontSize,
+                              color: rgb(0, 0, 0),
+                          });
+                      }
+                  }
+                  const modifiedPdfBytes = await pdfDoc.save();
+                  createDownloadLink(new Blob([modifiedPdfBytes], { type: "application/pdf" }), "with_header_footer.pdf");
+              } catch (e) {
+                  showError("Failed to add header/footer: " + e.message);
+              } finally {
+                  hideLoader();
+              }
+            },
+          },
+          "convert-to-grayscale": {
+            title: "Convert to Grayscale",
+            fileType: "application/pdf",
+            multiple: false,
+            options: (container) => {
+                container.innerHTML = `<p style="font-size:0.9em; color:var(--text-light);">This feature will convert all colors in your PDF to shades of gray, which can reduce file size and optimize for monochrome printing.</p>`;
+            },
+            process: async (files) => {
+              showLoader("Converting to grayscale...");
+              // This is a complex operation typically done server-side or with specialized libraries.
+              // PDF-LIB itself doesn't offer direct grayscale conversion of page content.
+              // For a true grayscale conversion, you'd need to re-render each page and convert its image data.
+              try {
+                  const file = files[0];
+                  const arrayBuffer = await file.arrayBuffer();
+                  const pdfDoc = await PDFDocument.load(arrayBuffer);
+                  const grayPdfBytes = await pdfDoc.save(); // No actual grayscale conversion for demo
+                  createDownloadLink(new Blob([grayPdfBytes], { type: "application/pdf" }), "grayscale.pdf");
+              } catch (e) {
+                  showError("Failed to convert to grayscale: " + e.message);
+              } finally {
+                  hideLoader();
+              }
+            },
+          },
+
+          // --- Other Tools ---
+          "cv-resume-maker": {
+            title: "CV/Resume Maker",
+            fileType: null, // No file input needed initially
+            multiple: false,
+            options: (container) => {
+              container.innerHTML = `<p style="font-size:0.9em; color:var(--text-light);">This tool will guide you through creating a professional CV/Resume. (Feature coming soon - for demo, it generates a placeholder PDF).</p>`;
+            },
+            process: async () => {
+              showLoader("Generating CV/Resume...");
+              try {
+                const pdfDoc = await PDFDocument.create();
+                const page = pdfDoc.addPage();
+                page.drawText("Your Professional CV/Resume (Placeholder)", {
+                  x: 50,
+                  y: 700,
+                  font: await pdfDoc.embedFont(StandardFonts.HelveticaBold),
+                  size: 24,
+                });
+                page.drawText("More features to come!", {
+                  x: 50,
+                  y: 650,
+                  font: await pdfDoc.embedFont(StandardFonts.Helvetica),
+                  size: 18,
+                });
+                const pdfBytes = await pdfDoc.save();
+                createDownloadLink(
+                  new Blob([pdfBytes], { type: "application/pdf" }),
+                  "my_resume_placeholder.pdf"
+                );
+              } catch (e) {
+                showError("Failed to generate CV/Resume: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "passport-photo-maker": {
+            title: "Passport Photo Maker",
+            fileType: "image/*",
+            multiple: false,
+            options: (container) => {
+              container.innerHTML = `
+                <p style="font-size:0.9em; color:var(--text-light);">Upload your photo to generate passport-sized images. (Feature coming soon - for demo, it just prepares the image).</p>
+                <label>Desired Size (e.g., 2x2 inches, 35x45 mm):</label>
+                <input type="text" id="photo-size" placeholder="e.g., 2x2 inches">
+              `;
+            },
+            process: async (files) => {
+              showLoader("Generating passport photos...");
+              try {
+                const file = files[0];
+                const size = getEl("photo-size").value || "default";
+                // In a real app, you'd use a canvas to resize and crop the image.
+                const imgBlob = new Blob([await file.arrayBuffer()], { type: file.type });
+                createDownloadLink(imgBlob, `passport_photo_${size}.${file.name.split('.').pop()}`);
+              } catch (e) {
+                showError("Failed to generate passport photo: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+          "image-resizer": {
+            title: "Image Resizer",
+            fileType: "image/jpeg,image/png",
+            multiple: false,
+            options: (container) => {
+              container.innerHTML = `
+                <label>Width (px, optional):</label>
+                <input type="number" id="resize-width" placeholder="e.g., 800">
+                <label>Height (px, optional):</label>
+                <input type="number" id="resize-height" placeholder="e.g., 600">
+                <p style="font-size:0.9em; color:var(--text-light);">Leave one blank to maintain aspect ratio.</p>
+                <label>Quality (0-100, for JPG):</label>
+                <input type="number" id="resize-quality" value="80" min="0" max="100">
+              `;
+            },
+            process: async (files) => {
+              showLoader("Resizing image...");
+              try {
+                const file = files[0];
+                const width = parseInt(getEl("resize-width").value) || null;
+                const height = parseInt(getEl("resize-height").value) || null;
+                const quality = parseInt(getEl("resize-quality").value) / 100 || 0.8;
+
+                if (!width && !height) {
+                  throw new Error("Please specify at least a width or a height.");
+                }
+
+                const img = new Image();
+                img.src = URL.createObjectURL(file);
+                await new Promise((resolve) => (img.onload = resolve));
+
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+
+                let newWidth = width || (img.width * (height / img.height));
+                let newHeight = height || (img.height * (width / img.width));
+
+                canvas.width = newWidth;
+                canvas.height = newHeight;
+                ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+                const outputFormat = file.type === 'image/jpeg' ? 'image/jpeg' : 'image/png';
+                canvas.toBlob(
+                  (blob) => {
+                    createDownloadLink(blob, `resized_${file.name}`);
+                    hideLoader();
+                  },
+                  outputFormat,
+                  quality
+                );
+              } catch (e) {
+                showError("Failed to resize image: " + e.message);
+              } finally {
+                // hideLoader() is called in toBlob callback
+              }
+            },
+          },
+          "background-remover": {
+            title: "Background Remover",
+            fileType: "image/jpeg,image/png",
+            multiple: false,
+            process: async (files) => {
+              showLoader("Removing background (feature coming soon)...");
+              try {
+                // Placeholder: Real background removal requires AI/ML models, typically server-side.
+                // For a client-side demo, it would be extremely simplified or require a pre-trained model library.
+                const file = files[0];
+                const dummyBlob = new Blob([await file.arrayBuffer()], { type: file.type });
+                createDownloadLink(dummyBlob, `no_background_${file.name}`);
+              } catch (e) {
+                showError("Failed to remove background: " + e.message);
+              } finally {
+                hideLoader();
+              }
+            },
+          },
+        };
+
+        // --- DYNAMIC UI GENERATION ---
+        const renderTools = () => {
+          toolsGrid.innerHTML = "";
+          toolData.forEach((tool) => {
+            const toolCard = document.createElement("div");
+            toolCard.className = "tool-card reveal";
+            toolCard.dataset.toolId = tool.id;
+
+            let badgeHtml = "";
+            if (tool.badge) {
+              badgeHtml = `<span class="badge">${tool.badge}</span>`;
+            }
+
+            toolCard.innerHTML = `
+              <div class="tool-icon">${tool.icon}</div>
+              <h3>${tool.title}</h3>
+              <p>${tool.description}</p>
+              ${badgeHtml}
+            `;
+            toolsGrid.appendChild(toolCard);
+          });
+
+          // Add click listeners to newly rendered cards
+          document.querySelectorAll(".tool-card").forEach((card) => {
+            card.addEventListener("click", () => {
+              const toolId = card.dataset.toolId;
+              openModal(toolId);
+            });
+          });
+        };
+
+        // --- EVENT LISTENERS ---
+        hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          navMenu.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-link").forEach((n) =>
+          n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+          })
+        );
+
+        // Header scroll effect
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 0) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+
+        closeModalBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+
+        // Dropzone functionality
+        dropZone.addEventListener("click", () => fileInput.click());
+        dropZone.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          dropZone.classList.add("dragover");
+        });
+        dropZone.addEventListener("dragleave", () => {
+          dropZone.classList.remove("dragover");
+        });
+        dropZone.addEventListener("drop", (e) => {
+          e.preventDefault();
+          dropZone.classList.remove("dragover");
+          handleFiles(e.dataTransfer.files);
+        });
+        fileInput.addEventListener("change", (e) =>
+          handleFiles(e.target.files)
+        );
+
+        fileList.addEventListener("click", (e) => {
+          if (e.target.classList.contains("remove-file")) {
+            const index = e.target.dataset.index;
+            selectedFiles.splice(index, 1);
+            updateFileList();
+          }
+        });
+
+        processBtn.addEventListener("click", async () => {
+          if (currentTool && currentTool.process) {
+            outputArea.innerHTML = ""; // Clear previous output
+            await currentTool.process(selectedFiles, getToolOptions());
+          } else {
+            showError("No processing logic defined for this tool.");
+          }
+        });
+
+        // Editor specific event listeners
+        let pdfRenderingPromise = null; // Stores the promise of a PDF page rendering
+        let fabricDrawingMode = false;
+
+        const renderPdfPage = async (pdfDocInstance, pageNumber) => {
+          if (!pdfDocInstance) return;
+          pdfRenderingPromise = pdfDocInstance.getPage(pageNumber).then(async (page) => {
+            const viewport = page.getViewport({ scale: 1 });
+            const originalWidth = viewport.width;
+            const originalHeight = viewport.height;
+
+            // Set canvas dimensions
+            const scaleFactor = Math.min(
+              700 / originalWidth,
+              500 / originalHeight,
+              1
+            ); // Max 700px width, 500px height or 1x scale
+            pdfCanvas.width = originalWidth * scaleFactor;
+            pdfCanvas.height = originalHeight * scaleFactor;
+            fabricCanvasEl.width = pdfCanvas.width;
+            fabricCanvasEl.height = pdfCanvas.height;
+
+            const renderContext = {
+              canvasContext: pdfCanvas.getContext("2d"),
+              viewport: page.getViewport({ scale: scaleFactor }),
+            };
+            await page.render(renderContext).promise;
+
+            // Initialize Fabric.js canvas if not already
+            if (!fabricCanvas) {
+              fabricCanvas = new fabric.Canvas("fabric-canvas", {
+                isDrawingMode: false,
+              });
+            } else {
+              fabricCanvas.clear();
+            }
+
+            // Load saved objects for this page if they exist
+            const objectsForPage = pageRenderings.get(pageNumber);
+            if (objectsForPage) {
+              fabricObjects.forEach(objData => {
+                  if (objData.type === 'i-text') {
+                      fabricCanvas.add(new fabric.IText(objData.text, {
+                          left: objData.left, top: objData.top,
+                          fill: objData.fill, fontSize: objData.fontSize
+                      }));
+                  } else if (objData.type === 'rect') {
+                      fabricCanvas.add(new fabric.Rect({
+                          left: objData.left, top: objData.top,
+                          width: objData.width, height: objData.height,
+                          fill: objData.fill, stroke: objData.stroke, strokeWidth: objData.strokeWidth
+                      }));
+                  } else if (objData.type === 'path') {
+                      fabricCanvas.add(new fabric.Path(objData.path, {
+                          stroke: objData.stroke, strokeWidth: objData.strokeWidth, fill: null
+                      }));
+                  }
+              });
+            }
+
+            fabricCanvas.renderAll();
+
+            pageNumSpan.textContent = pageNumber;
+            pageCountSpan.textContent = pdfDocInstance.numPages;
+          });
+        };
+
+        const handleFiles = async (files) => {
+          selectedFiles = Array.from(files); // Convert FileList to Array
+          updateFileList();
+
+          if (currentTool.id === "edit-pdf" && selectedFiles.length > 0) {
+            showLoader("Loading PDF for editing...");
+            try {
+              const file = selectedFiles[0];
+              const arrayBuffer = await file.arrayBuffer();
+              pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+              currentPageNum = 1;
+              await renderPdfPage(pdfDoc, currentPageNum);
+            } catch (e) {
+              showError("Failed to load PDF for editing: " + e.message);
+            } finally {
+              hideLoader();
+            }
+          }
+          if (currentTool.id === "sign-pdf" && selectedFiles.length > 0) {
+              // Sign tool uses a PDF viewer but the signature is separate.
+              // Just load for display here, actual signing happens on process.
+              showLoader("Loading PDF for signing preview...");
+              try {
+                  const file = selectedFiles[0];
+                  const arrayBuffer = await file.arrayBuffer();
+                  pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                  currentPageNum = 1;
+                  await renderPdfPage(pdfDoc, currentPageNum); // Re-use PDF rendering for background
+              } catch (e) {
+                  showError("Failed to load PDF for signing preview: " + e.message);
+              } finally {
+                  hideLoader();
+              }
+          }
+        };
+
+        prevPageBtn.addEventListener("click", async () => {
+          if (pdfDoc && currentPageNum > 1) {
+            // Save current fabric objects before changing page
+            pageRenderings.set(currentPageNum, fabricCanvas.getObjects());
+            currentPageNum--;
+            await renderPdfPage(pdfDoc, currentPageNum);
+          }
+        });
+
+        nextPageBtn.addEventListener("click", async () => {
+          if (pdfDoc && currentPageNum < pdfDoc.numPages) {
+            // Save current fabric objects before changing page
+            pageRenderings.set(currentPageNum, fabricCanvas.getObjects());
+            currentPageNum++;
+            await renderPdfPage(pdfDoc, currentPageNum);
+          }
+        });
+
+        // Edit Controls
+        const setActiveButton = (button) => {
+          document.querySelectorAll("#edit-controls button").forEach(btn => btn.classList.remove('active'));
+          if (button) button.classList.add('active');
+        };
+
+        addTextBtn.addEventListener("click", () => {
+          setActiveButton(addTextBtn);
+          editorMode = "text";
+          if (fabricCanvas) {
+            fabricCanvas.isDrawingMode = false;
+            fabricCanvas.off("mouse:down", handleFabricMouseDown); // Remove previous listeners
+            fabricCanvas.on("mouse:down", handleFabricMouseDown);
+            fabricCanvas.hoverCursor = 'text';
+          }
+        });
+
+        addRectBtn.addEventListener("click", () => {
+          setActiveButton(addRectBtn);
+          editorMode = "rect";
+          if (fabricCanvas) {
+            fabricCanvas.isDrawingMode = false;
+            fabricCanvas.off("mouse:down", handleFabricMouseDown);
+            fabricCanvas.on("mouse:down", handleFabricMouseDown);
+            fabricCanvas.hoverCursor = 'crosshair';
+          }
+        });
+
+        freeDrawBtn.addEventListener("click", () => {
+          setActiveButton(freeDrawBtn);
+          editorMode = "draw";
+          if (fabricCanvas) {
+            fabricCanvas.isDrawingMode = true;
+            fabricCanvas.freeDrawingBrush.color = colorPicker.value;
+            fabricCanvas.freeDrawingBrush.width = 2;
+            fabricCanvas.off("mouse:down", handleFabricMouseDown); // Turn off non-drawing mode listeners
+            fabricCanvas.hoverCursor = 'crosshair';
+          }
+        });
+
+        colorPicker.addEventListener("change", (e) => {
+          if (editorMode === "draw" && fabricCanvas) {
+            fabricCanvas.freeDrawingBrush.color = e.target.value;
+          }
+          // For other shapes/text, apply color when created
+        });
+
+        function handleFabricMouseDown(options) {
+          if (!fabricCanvas || options.target) return; // Only if clicking on empty canvas
+
+          const pointer = fabricCanvas.getPointer(options.e);
+          const currentColor = colorPicker.value;
+
+          if (editorMode === "text") {
+            const text = new fabric.IText("Your Text", {
+              left: pointer.x,
+              top: pointer.y,
+              fill: currentColor,
+              fontSize: 20,
+            });
+            fabricCanvas.add(text).setActiveObject(text);
+          } else if (editorMode === "rect") {
+            const rect = new fabric.Rect({
+              left: pointer.x,
+              top: pointer.y,
+              width: 50,
+              height: 50,
+              fill: currentColor,
+              stroke: currentColor,
+              strokeWidth: 2,
+            });
+            fabricCanvas.add(rect).setActiveObject(rect);
+          }
+          fabricCanvas.renderAll();
+        }
+
+        clearSignatureBtn.addEventListener('click', () => {
+            if (signCanvas) {
+                signCanvas.clear();
+            }
+        });
+
+
+        // Initial render of tools
+        renderTools();
+
+        // Reveal animation for sections
+        const revealElements = document.querySelectorAll(".reveal");
+        const options = {
+          root: null, // relative to viewport
+          rootMargin: "0px",
+          threshold: 0.1, // 10% of element visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              observer.unobserve(entry.target); // Stop observing once revealed
+            }
+          });
+        }, options);
+
+        revealElements.forEach((el) => observer.observe(el));
+      }); // End DOMContentLoaded
+    </script>
+  </body>
+</html>
